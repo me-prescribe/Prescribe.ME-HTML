@@ -20,8 +20,8 @@
         <p>An Android Application for doctors to <strong>verbally</strong> prescribe Medicines</p>
         <p>Using this application, doctors can utter Prescriptions in <strong>English</strong> sentences, which will then by converted to a tabular prescription</p>
         <p>Each &amp; Every Field mentioned or not mentioned below excluding password can be entered orally by the user with the help of <a href="https://cloud.google.com/speech-to-text">Google Speech to Text</a>.</p>
-        <h2 id="features">Features</h2>
-        <h3 id="user-profile">User Profile</h3>
+        <h2>Features</h2>
+        <h3>User Profile</h3>
         <p>User Registration &amp; Authentication is done using <a href="https://firebase.google.com/docs/auth">Firebase Authentication</a>.</p>
         <p>The app stores user Profile in <a href="https://firebase.google.com/docs/database">Firebase Realtime Database</a>.</p>
         <p>Information Stored include:</p>
@@ -35,7 +35,7 @@
         <li>Qualifications</li>
         </ul>
         <p>The App also stores User Signature in <a href="https://firebase.google.com/docs/storage">Firebase Storage</a>.</p>
-        <h3 id="prescription">Prescription</h3>
+        <h3>Prescription</h3>
         <p>Before proceeding for prescription, the app initially asks for patient information.</p>
         <p>The app asks for 4 fields related to the patient:</p>
         <ul>
@@ -51,7 +51,7 @@
         <li>Prescription</li>
         <li>Additional Information (optional)</li>
         </ul>
-        <h4 id="-prescribing-medicines-"><strong>Prescribing Medicines</strong></h4>
+        <h4>Prescribing Medicines</h4>
         <p>The user can utter (by voice) or type in the prescription (1 sentence per drug) in simple <strong>English</strong> sentences. Then, they can click on the <em>Prescribe Above Sentence</em> button once sentence is finalised. Now, this sentence is sent through API to our ML Model hosted on <a href="https://devcenter.heroku.com/">Heroku App</a>. The Model then predicts intent &amp; slots. These slots are then returned to the app where they are displayed in tabular format.</p>
         <p>Example:</p>
         <blockquote>
@@ -126,9 +126,58 @@
         </li>
         </ul>
         <p>for confirmation.</p>
-        <h4 id="-html-"><strong>HTML</strong></h4>
+        <h4>HTML</h4>
         <p>After the user has confirmed above mentioned information, a prescription is generated. The Prescription contains the user&#39;s info next to a <a href="https://en.wikipedia.org/wiki/Caduceus">Caduceus</a> which is a symbol of the doctor. Followed by the Patient&#39;s Info, Date, and a unique Prescription ID.</p>
         <p>This is then followed by the Prescription itself, which is the above table rotated. All prescriptive sentences are included in this table. i.e. non-prescriptive sentences (normal conversatory sentences) are not included.</p>
         <p>After this, is the Signature &amp; Name of the Doctor.</p>
+        <p><img src="Prescription HTML.png" alt="image"></p>
+        <h4>PDF</h4>
+        <p>The above generated HTML Prescription is converted to a PDF. Using <a href="https://pspdfkit.com/">PSPDFKit</a>, the PDF is displayed in the app. The PDF is opened in print viewed, which the user can then save on his phone or print using the print button.</p>
+        <h3>Dark Mode</h3>
+        <p>We are proud to present the app in Dark Mode. Instead of having forced dark modes or too much brightness when unnecessary, users can switch to Dark Mode. Implemented using separate <code>theme.xml</code> , <code>color.xml</code> and <code>style.xml</code> files in the <a href="https://github.com/me-prescribe/Prescribe.ME/tree/master/app/src/main/res/values"><code>values</code></a> &amp; <a href="https://github.com/me-prescribe/Prescribe.ME/tree/master/app/src/main/res/values-night"><code>values-night</code></a> repositories.</p>
+        <h2>Add-ons used</h2>
+        <ul>
+        <li>Firebase Authentication used for Authentication of Users</li>
+        <li>Firebase Realtime Database used for storing User Profile</li>
+        <li>Firebase Storage used for storing User Signature</li>
+        <li>Heroku App used for ML Model</li>
+        <li>PSPDFKit used for PDF Generation</li>
+        <li>Firebase App Tester for sending out versions for testing</li>
+        <li>Firebase Crashlytics for logging errors</li>
+        <li>Firebase Performance Monitoring for logging performance</li>
+        <li>Google Analytics for tracking usage</li>
+        <li>Google Speech to Text for converting speech to text</li>
+        </ul>
+        <h2>Privacy Policy</h2>
+        <p>Privacy Policy has been published separately. Encompassing the Privacy Policy and Terms of Service related to User Profile, Prescription, and Signature storage &amp; display.</p>
+        <h2>Other Important Information</h2>
+        <ul>
+        <li>Colours Used:<ul>
+        <li>Light Mode:<ul>
+        <li>Background: White (0xFFFFFF)</li>
+        <li>Text: Navy Blue (0x000080)</li>
+        <li>Error Text: Red (0xFF0000)</li>
+        </ul>
+        </li>
+        <li>Dark Mode:<ul>
+        <li>Background: Black (0x000000)</li>
+        <li>Text: Gold (0xD4AF37)</li>
+        <li>Error Text: Red (0xFF0000)</li>
+        </ul>
+        </li>
+        </ul>
+        </li>
+        <li>Fonts Used:<ul>
+        <li><a href="https://fonts.google.com/specimen/Righteous">Righteous</a> for Branding</li>
+        <li><a href="https://fonts.google.com/specimen/Berkshire+Swash">Berkshire Swash</a> for Doctor Name in Prescription</li>
+        <li><a href="https://fonts.google.com/specimen/EB+Garamond">EB Garamond</a> for other Doctor Info in Prescription</li>
+        <li><a href="https://fonts.google.com/specimen/Allerta+Stencil">Allerta Stencil</a> for Patient Info in Prescription</li>
+        <li><a href="https://fonts.google.com/specimen/Cantata+One">Cantata One</a> for Table Heading in Prescription</li>
+        <li><a href="https://fonts.google.com/specimen/Aldrich">Aldrich</a> for Drug Name &amp; INN</li>
+        <li><a href="https://fonts.google.com/specimen/Baumans">Baumans</a> for Other Table Contents</li>
+        <li><a href="https://fonts.google.com/specimen/Cabin">Cabin</a> for Diagnosis &amp; Additional Information</li>
+        </ul>
+        </li>
+        </ul>
     </body>
 </html>
