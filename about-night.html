@@ -22,5 +22,113 @@
         <p>Each &amp; Every Field mentioned or not mentioned below excluding password can be entered orally by the user with the help of <a href="https://cloud.google.com/speech-to-text">Google Speech to Text</a>.</p>
         <h2 id="features">Features</h2>
         <h3 id="user-profile">User Profile</h3>
+        <p>User Registration &amp; Authentication is done using <a href="https://firebase.google.com/docs/auth">Firebase Authentication</a>.</p>
+        <p>The app stores user Profile in <a href="https://firebase.google.com/docs/database">Firebase Realtime Database</a>.</p>
+        <p>Information Stored include:</p>
+        <ul>
+        <li>First Name</li>
+        <li>Last Name</li>
+        <li>Aadhar No</li>
+        <li>Contact No</li>
+        <li>Clinic/Hospital Visits</li>
+        <li>Registration No</li>
+        <li>Qualifications</li>
+        </ul>
+        <p>The App also stores User Signature in <a href="https://firebase.google.com/docs/storage">Firebase Storage</a>.</p>
+        <h3 id="prescription">Prescription</h3>
+        <p>Before proceeding for prescription, the app initially asks for patient information.</p>
+        <p>The app asks for 4 fields related to the patient:</p>
+        <ul>
+        <li>First Name</li>
+        <li>Last Name</li>
+        <li>Age</li>
+        <li>Gender</li>
+        </ul>
+        <p>After Patient Info is entered, the next step is for Prescription.
+        Here, the user is prompted for 3 fields:</p>
+        <ul>
+        <li>Diagnosis (optional)</li>
+        <li>Prescription</li>
+        <li>Additional Information (optional)</li>
+        </ul>
+        <h4 id="-prescribing-medicines-"><strong>Prescribing Medicines</strong></h4>
+        <p>The user can utter (by voice) or type in the prescription (1 sentence per drug) in simple <strong>English</strong> sentences. Then, they can click on the <em>Prescribe Above Sentence</em> button once sentence is finalised. Now, this sentence is sent through API to our ML Model hosted on <a href="https://devcenter.heroku.com/">Heroku App</a>. The Model then predicts intent &amp; slots. These slots are then returned to the app where they are displayed in tabular format.</p>
+        <p>Example:</p>
+        <blockquote>
+        <p>Prescription: <em>&quot;I suggest taking Tablet Dolo 650 Paracetamol for 15 days 3 times a week after breakfast&quot;</em></p>
+        </blockquote>
+        <table>
+        <thead>
+        <tr>
+        <th>Slot Name</th>
+        <th>Slot Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>Drug</td>
+        <td>Tablet Dolo 650</td>
+        </tr>
+        <tr>
+        <td>INN</td>
+        <td>Paracetamol</td>
+        </tr>
+        <tr>
+        <td>Frequency</td>
+        <td>3 times a week</td>
+        </tr>
+        <tr>
+        <td>Consumption</td>
+        <td>after breakfast</td>
+        </tr>
+        <tr>
+        <td>Duration</td>
+        <td>15 days</td>
+        </tr>
+        <tr>
+        <td>Gap</td>
+        <td>-</td>
+        </tr>
+        <tr>
+        <td>Quantity</td>
+        <td>-</td>
+        </tr>
+        <tr>
+        <td>Route</td>
+        <td>-</td>
+        </tr>
+        <tr>
+        <td>Condition</td>
+        <td>-</td>
+        </tr>
+        <tr>
+        <td>Fasting</td>
+        <td>-</td>
+        </tr>
+        </tbody>
+        </table>
+        <p>The user may prescribe as many times as they wish. Once, they have prescribed all drugs necessary, they can proceed to view the prescription.</p>
+        <h3 id="displaying-prescription">Displaying Prescription</h3>
+        <p>The user is displayed:</p>
+        <ul>
+        <li>Doctor Profile<ul>
+        <li>Name</li>
+        <li>Qualifications</li>
+        <li>Clinic/Hospital</li>
+        <li>Contact No</li>
+        </ul>
+        </li>
+        <li>Patient Profile<ul>
+        <li>Name</li>
+        <li>Age</li>
+        <li>Gender</li>
+        </ul>
+        </li>
+        </ul>
+        <p>for confirmation.</p>
+        <h4 id="-html-"><strong>HTML</strong></h4>
+        <p>After the user has confirmed above mentioned information, a prescription is generated. The Prescription contains the user&#39;s info next to a <a href="https://en.wikipedia.org/wiki/Caduceus">Caduceus</a> which is a symbol of the doctor. Followed by the Patient&#39;s Info, Date, and a unique Prescription ID.</p>
+        <p>This is then followed by the Prescription itself, which is the above table rotated. All prescriptive sentences are included in this table. i.e. non-prescriptive sentences (normal conversatory sentences) are not included.</p>
+        <p>After this, is the Signature &amp; Name of the Doctor.</p>
     </body>
 </html>
